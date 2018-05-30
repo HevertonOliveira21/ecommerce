@@ -10,6 +10,8 @@ class Page {
 	private $options = [];
 	// Opções padrões
 	private $defaults = [
+		"header"=>true,
+		"footer"=>true,
 		"data"=>[]
 	];
 
@@ -38,8 +40,10 @@ class Page {
 
 		$this -> setData($this -> options["data"]);
 
-		// Desenho do cabeçalho
-		$this -> tpl -> draw("header");
+		if($this -> options["header"] === true) {
+			// Desenho do cabeçalho
+			$this -> tpl -> draw("header");
+		}
 	}
 
 	private function setData($data = array()) {
@@ -61,8 +65,8 @@ class Page {
 
 	// Rodapé
 	public function __destruct() {
-
-		$this -> tpl -> draw("footer");
+		if($this -> options["footer"] === true)
+			$this -> tpl -> draw("footer");
 
 	}
 
