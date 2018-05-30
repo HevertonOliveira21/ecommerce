@@ -14,7 +14,7 @@ class Page {
 	];
 
 
-	public function __construct($opts = array()) {
+	public function __construct($opts = array(), $tpl_dir = "/views/") {
 
 		// Mescla de arrays - O último sobreescreve o primeiro
 		$this->options = array_merge($this -> defaults, $opts);
@@ -24,7 +24,7 @@ class Page {
 		// E uma para arquivos de cache
 		$config = array(
 			// $_SERVER["DOCUMENT_ROOT"] -> Variável que retorna a localização do repositório raiz da aplicação
-			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",
+			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]. $tpl_dir,
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
 			"debug"         => false // set to false to improve the speed
 		);
